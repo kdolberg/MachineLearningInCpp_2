@@ -10,13 +10,25 @@
 #define FIRST_WEIGHT_INDEX 1
 
 typedef double scalar_t;
+typedef std::vector<scalar_t> layer_io_datum_t;
 
 /**
- * A single input or output for a layer.
- * Note that the output for an individual node would be a scalar
+ * Used as input for a layer, input for a node, or output for a layer.
+ * Note that this is NOT the output for a node.
+ * 
+ * This is a struct in part so that we can easily add any other bits of information that turn out to be needed.
  */
-typedef std::vector<scalar_t> data_vec_t;
-typedef std::vector<data_vec_t> dataset_t;
+typedef struct{
+	layer_io_datum_t data;
+	/*Add other bits of data (activation values, partial derivatives), when you know what they'll look like*/
+}layer_data_cache_t;
+
+typedef struct {
+	/**
+	 * This struct will be present in all nodes. There will be a pointer to the corresponding elements in the 
+	 * layer_data_cache_t
+	 */
+} node_output_cache_t;
 
 /**
  * The weights and bias of a particular node.
@@ -35,17 +47,6 @@ typedef struct {
 }node_activation_function_t;
 
 /**
- * All signal data that is stored in the node.
- * * Examples:	Input
- * 				Output
- * 				Activation values
- * 				Parial derivatives
- */
-typedef struct {
-	 activation;
-} node_data_cache_t;
-
-/**
  * Glues together the other elements of a node that were defined earlier.
  */
 typedef struct node_t{
@@ -56,9 +57,10 @@ typedef struct node_t{
 	node_t * output_nodes;// The nodes whose input is the output from this node. Null if this is an output layer.
 
 	/**
-	 * The mathy structs
+	 * Mathy structs
 	 */
-	node_data_cache_t * p_data_cache;
+	const layer_data_cache_t * input;
+	node_output_cache_t output;
 	const node_activation_function_t * activation_function;
 	node_wb_t wb;
 } node_t;
