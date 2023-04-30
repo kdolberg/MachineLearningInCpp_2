@@ -85,4 +85,12 @@ typedef struct {
 	layer_data_cache_t data_cache;
 } layer_t;
 
+/**
+ * A dataset formatted for a neural network to train on it.
+ */
+typedef struct {
+	layer_io_data_t x_data;
+	layer_io_data_t y_data;
+} xy_dataset_t;
+
 #endif
