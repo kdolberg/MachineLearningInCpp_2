@@ -24,39 +24,26 @@ typedef struct {
 	/*Add other bits of data (activation values, partial derivatives), when you know what they'll look like*/
 } layer_data_cache_t;
 
-typedef scalar_t bias_t;
-typedef std::vector<scalar_t> weights_t;
+template<typename T>
+struct node_shape_s{
+	T b;
+	std::vector<T> w;
+};
+
 /**
  * The weights and bias of a particular node.
  */
-typedef struct {
-	bias_t b;
-	weights_t w;
-} node_wb_t;
-
-typedef std::vector<scalar_t*> node_output_t;
+typedef node_shape_s<scalar_t> node_wb_t;
 
 /**
- * Partial derivatives of the weights and bias of a particular node.
+ * Partial derivatives for the weights and biases of a particular node (for one input datum)
  */
-typedef struct {
-	node_output_t b;
-	std::vector<node_output_t> w;
-} node_partial_derivatives_t;
+typedef node_shape_s<scalar_t*> node_naive_partial_derivative_pointers_t;
 
-/**
- * Contains pointers to all io data that nodes need to do their node things
- */
 typedef struct {
-	//Raw inputs for the node, the output from the previous layer
-	layer_io_data_t * my_input;
-	//Input from the next layer, the partial derivatives used to calculate this node's partial derivatives (will use the b partials only)
-	node_partial_derivatives_t * next_layer_partial_derivatives;
-
-	//Outputs for this node
-	node_output_t my_output;
-	node_partial_derivatives_t my_partial_derivatives;
-} node_data_cache_t;
+	scalar_t * node_output;
+	node_naive_partial_derivative_pointers_t naive_partials;
+} node_forwardpropagation_output_t;
 
 typedef scalar_t scalar_function_t(scalar_t);
 
@@ -69,14 +56,10 @@ typedef struct {
 } node_activation_function_t;
 
 /**
- * Glues together the other elements of a node that were defined earlier.
+ * Glues together the elements of a node
  */
 typedef struct node_t {
-	/**
-	 * Mathy structs
-	 */
-	node_data_cache_t * data_cache;
-	const node_activation_function_t * activation_function;
+	node_activation_function_t * activation_function;
 	node_wb_t wb;
 } node_t;
 
