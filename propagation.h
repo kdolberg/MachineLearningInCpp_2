@@ -11,6 +11,11 @@
 
 #define MAKE_VECTORS_SAME_SIZE(dest_,src_) (dest_).resize((src_).size())
 
+/**
+ * @brief Allocates the same number of memory spots for dest as there are in src
+ * @param dest The node-shaped object to be formatted/memallocated
+ * @param src The node-shaped object whose format will be copied
+ */
 template <typename U, typename T>
 void node_shape_allocate(node_shape_s<std::vector<U>> dest,const node_shape_s<std::vector<T>>& src) {
     MAKE_VECTORS_SAME_SIZE(dest.b,src.b);
