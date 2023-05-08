@@ -23,7 +23,7 @@ void make_topology(std::vector<std::vector<T>>& top,const std::vector<uint>& def
 
 /**
  * @brief Function template that provides the ability to format any arbitrary 2-D vector.
- * @param top Pointer to a previously-initialized std::vector<std::vector<T>> to be formatted. Please note that the function assumes that memory is allocated for this object.
+ * @param top Pointer to a previously-initialized std::vector<std::vector<T>> to be formatted. Assumes memory is allocated.
  * @param def Vector specifiying the length of each sub-vector.
  */
 template <typename W>
