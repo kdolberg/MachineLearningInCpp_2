@@ -69,4 +69,9 @@ typedef struct {
     vector_data_t y_data;
 } xy_dataset_t;
 
+/**
+ * @brief Contains the INPUT data for each layer in a net.
+ */
+typedef std::vector<vector_data_t> net_layer_input_data_t;
+
 #endif

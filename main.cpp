@@ -1,18 +1,14 @@
-#include "topology.h"
-#include "node.h"
 #include <iostream>
+#include <vector>
+#include "net.h"
+#include "../CppUtilities/vec_overload.h"
 
-// class Net : public Topology<node_t> {
-// 	Net(const std::vector<uint>& def) : Topology<node_t>(def) {
+int main(int argc, char const *argv[]) {
+	std::vector<uint> a = {1,2,3,4};
+	std::vector<std::vector<double>> vec = make_topology<double>(a);
+	std::cout << vec;
 
-// 	}
-// };
+	// std::cout << "The output of the overloaded operator is: " << vec.get(i);
 
-int main(int argc, char const *argv[])
-{
-	// node_t n;
-	// std::vector<uint> def = {5,10,1};
-	// Topology<double> t(def);
-	// std::cout << t;
 	return 0;
 }
