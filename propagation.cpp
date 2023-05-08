@@ -6,6 +6,9 @@
 
 void make_wb_topology(const net_wb_t& wb, )
 
+/************************************************************************************************************************
+                                                    Static Functions
+ ************************************************************************************************************************/
 /**
  * @brief Allocates memory for a forward data cache struct based on net
  * @param net The neural network that will be using this data cache
@@ -27,6 +30,9 @@ void allocate_back_data_cache_memory(const net_t& net, net_forward_data_cache_t&
     }
 }
 
+/************************************************************************************************************************
+                                                    Shared Functions
+ ************************************************************************************************************************/
 void forwardpropagate(const net_t& net,net_forward_data_cache_t& fdata) {
 
     /*Some additional memory allocation needed for naive partials*/
