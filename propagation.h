@@ -1,5 +1,5 @@
 /**
- * @filename propagation.h
+ * @file propagation.h
  * @brief Functions used in forward and backpropagation
  * @author Kris Dolberg
  */
