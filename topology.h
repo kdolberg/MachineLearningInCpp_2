@@ -107,12 +107,4 @@ std::vector<std::vector<U>> make_topology(const std::vector<uint>& def) {
 	return ret;
 }
 
-template <typename U, typename T>
-void make_topology(std::vector<std::vector<U>>& u,const std::vector<std::vector<T>>& t) {
-	u.resize(t.size());
-	for (uint i = 0; i < t.size(); ++i) {
-		u[i].resize(t[i].size());
-	}
-}
-
 #endif
