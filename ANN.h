@@ -1,6 +1,7 @@
 /**
  * @file ANN.h
- * @brief Defines behaviour of an artificial neural network.
+ * @brief Defines the ANN class
+ * @author Kris Dolberg
  */
 
 #ifndef ANN_H
@@ -9,6 +10,9 @@
 #include "propagation.h"
 #include "topology.h"
 
+/**
+ * @brief Class that provides the bevaviour of a neural network
+ */
 class ANN {
 private:
 	net_t net;
