@@ -10,6 +10,9 @@
 #include "propagation.h"
 #include "topology.h"
 
+
+void make_net(net_t& n, const std::vector<uint>& def);
+
 /**
  * @brief Class that provides the bevaviour of a neural network
  */
