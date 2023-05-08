@@ -7,8 +7,12 @@
 #ifndef PROPAGATION_H
 #define PROPAGATION_H
 
+//Includes
 #include "datatypes.h"
 
+/**
+ * @brief Makes two std::<vectors> objects the same size.
+ */
 #define MAKE_VECTORS_SAME_SIZE(dest_,src_) (dest_).resize((src_).size())
 
 /**
@@ -51,4 +55,4 @@ void forwardpropagate(const net_t& net,net_forward_data_cache_t& fdata);
  */
 void backpropagate(const net_t& net, const net_forward_data_cache_t& fdata, net_back_data_cache_t& bdata);
 
-#endif
+#endif //PROPAGATION_H
