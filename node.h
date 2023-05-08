@@ -1,3 +1,8 @@
+/**
+ * @file node.h
+ * @brief
+ */
+
 #ifndef NODE_H
 #define NODE_H
 
@@ -5,50 +10,17 @@
 #include<stdbool.h>
 #include<vector>
 #include<list>
+#include "topology.h"
+#include "data.h"
 
 /**
- * @brief Index in a node of the bias
- */
-#define BIAS_INDEX 0
-#define FIRST_WEIGHT_INDEX 1
-
-typedef double scalar_t;
-typedef std::vector<scalar_t> layer_io_datum_t;
-typedef std::vector<layer_io_datum_t> layer_io_data_t;
-
-/**
- * @brief Used as input for a layer, input for a node, or output for a layer.
- * Note that this is NOT the output for a node.
- * 
- * This is a struct in part so that we can easily add any other bits of information that turn out to be needed.
- */
-typedef struct {
-	layer_io_data_t data;
-	/*Add other bits of data (activation values, partial derivatives), when you know what they'll look like*/
-} layer_data_cache_t;
-
-/**
- * @brief template for anything with the topology of a node.
- */
-template<typename T>
-struct node_shape_s{
-	T b;
-	std::vector<T> w;
-};
-
-/** @brief The weights and bias of a particular node.
+ * @brief The weights and bias of a particular node.
  */
 typedef node_shape_s<scalar_t> node_wb_t;
 
-/** @brief Partial derivatives for the weights and biases of a particular node (for one input datum)
+/**
+ * @brief Activation function for a node.
  */
-typedef node_shape_s<scalar_t*> node_naive_partial_derivative_pointers_t;
-
-typedef struct {
-	scalar_t * node_output;
-	node_naive_partial_derivative_pointers_t naive_partials;
-} node_forwardpropagation_output_t;
-
 typedef scalar_t scalar_function_t(scalar_t);
 
 /**
@@ -59,24 +31,18 @@ typedef struct {
 	scalar_function_t deriv_func;
 } node_activation_function_t;
 
-/** @brief Glues together the elements of a node
+/**
+ * @brief All activation functions used in a particular net.
  */
-typedef struct node_t {
-	node_activation_function_t * activation_function;
-	node_wb_t wb;
-} node_t;
-
+typedef std::vector<std::vector node_activation_function_t> net_activation_functions_t;
+/**
+ * @brief Weights and biases used in a particular net.
+ */
+typedef std::vector<std::vector<node_wb_t>> net_wb_t;
 
 typedef struct {
-	std::vector<node_t> nodes;
-	layer_data_cache_t data_cache;
-} layer_t;
-
-/** @brief A dataset formatted for a neural network to train on it.
- */
-typedef struct {
-	layer_io_data_t x_data;
-	layer_io_data_t y_data;
-} xy_dataset_t;
+	net_wb_t wb;
+	net_activation_functions_t af;
+} net_t;
 
 #endif
