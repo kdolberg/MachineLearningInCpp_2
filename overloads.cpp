@@ -35,9 +35,3 @@ std::ostream& operator<<(std::ostream& os, std::vector<scalar_datum_t> v) {
 	}
 	return os;
 }
-
-std::ostream& operator<<(std::ostream& os,const node_wb_t& wb) {
-	os << wb.b << " " << wb.w;
-	return os;
-}
-
