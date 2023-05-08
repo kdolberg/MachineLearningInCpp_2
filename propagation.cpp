@@ -1,10 +1,10 @@
-#include "propagation.h"
 /**
  * @filename propagation.cpp
  * @author Kris Dolberg
  */
 
 void make_wb_topology(const net_wb_t& wb, )
+#include "propagation.h"
 #include "topology.h"
 
 /************************************************************************************************************************
