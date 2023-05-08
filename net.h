@@ -54,6 +54,10 @@ typedef std::vector<layer_wb_t> net_wb_t;
  */
 typedef struct {
 	/**
+	 * @brief The learning rate
+	 */
+	scalar_datum_t learning_rate;
+	/**
 	 * @brief Weights and biases in each node
 	 */
 	net_wb_t wb;
