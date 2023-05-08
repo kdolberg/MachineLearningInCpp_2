@@ -14,20 +14,11 @@
  * @param net The neural network that will be using this data cache
  * @param fdata The forward data cache struct whose memory will be allocated 
  */
-static void allocate_forward_data_cache_memory(const net_t& net, net_forward_data_cache_t& fdata, net_back_data_cache_t& bdata) {
-    // make_topology(fdata.layer_io,net);
-    // make_topology(fdata.naive_partials,net);
-    // for (uint i = 0; i < wb.size(); ++i) {
-        
-    // }
-}
-
-static void allocate_back_data_cache_memory(const net_t& net, net_forward_data_cache_t& fdata, net_back_data_cache_t& bdata) {
-    // make_topology(fdata.layer_io,net);
-    // make_topology(fdata.naive_partials,net);
-    // for (uint i = 0; i < wb.size(); ++i) {
-        
-    // }
+static void allocate_cache_memory(const net_t& net, net_forward_data_cache_t& fdata, net_back_data_cache_t& bdata) {
+    uint dataset_size = net.training_dataset->x_data.size();
+    assert(dataset_size==net.training_dataset->y_data.size());
+    copy_topology(fdata.naive_partials,net.wb,dataset_size);
+    copy_topology(fdata.layer_io,net.wb,dataset_size);
 }
 
 /************************************************************************************************************************
