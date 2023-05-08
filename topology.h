@@ -10,7 +10,6 @@
 #define TOPOLOGY_H
 
 #include <vector>
-#include <cstddef>
 
 #ifndef uint
 typedef unsigned int uint;
