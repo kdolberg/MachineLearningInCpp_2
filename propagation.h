@@ -1,3 +1,9 @@
+/**
+ * @filename propagation.h
+ * @brief Functions used in forward and backpropagation
+ * @author Kris Dolberg
+ */
+
 #ifndef PROPAGATION_H
 #define PROPAGATION_H
 
