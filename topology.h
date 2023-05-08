@@ -80,7 +80,7 @@ void copy_topology(std::vector<U>& u,const std::vector<T>& t) {
  */
 template <typename T>
 void make_topology(std::vector<std::vector<T>>& top,const std::vector<uint>& def) {
-	top.resize(def.size());
+	copy_1d_topology(top,def);
 	for (uint i = 0; i < top.size(); ++i) {
 		top[i].resize(def[i]);
 	}
