@@ -1,3 +1,8 @@
+/**
+ * @file ANN.h
+ * @brief Defines behaviour of an artificial neural network.
+ */
+
 #ifndef ANN_H
 #define ANN_H
 
