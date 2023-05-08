@@ -71,22 +71,4 @@ typedef struct {
 	const xy_dataset_t * training_dataset;
 } net_t;
 
-/**
- * @brief Neural net data that cannot remain const during back and forward propagation.
- */
-typedef struct {
-	/**
-	 * @brief Naive partial derivatives calculated during forward propagation (?).
-	 */
-	net_partial_derivatives_t naive_partials;
-	/**
-	 * Real partial derivatives calculated during backpropagation
-	 */
-	net_partial_derivatives_t real_partials;
-	/**
-	 * Intermediate inputs between each layer calculated during forward propagation.
-	 */
-	net_layer_input_data_t layer_inputs;
-} net_data_cache_t;
-
 #endif
