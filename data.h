@@ -72,4 +72,28 @@ typedef struct {
  */
 typedef std::vector<vector_data_t> net_layer_input_data_t;
 
+/**
+ * @brief Neural net data that cannot remain const during forwardpropagation.
+ */
+typedef struct {
+    /**
+     * @brief Naive partial derivatives calculated during forward propagation (?).
+     */
+    net_partial_derivatives_t naive_partials;
+    /**
+     * Intermediate inputs between each layer calculated during forward propagation.
+     */
+    net_layer_input_data_t layer_inputs;
+} net_forward_data_cache_t;
+
+/**
+ * @brief Neural net data that cannot remain const during backpropagation.
+ */
+typedef struct {
+    /**
+     * @brief Real partial derivatives calculated during backpropagation
+     */
+    net_partial_derivatives_t real_partials;
+} net_back_data_cache_t;
+
 #endif
