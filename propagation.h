@@ -29,7 +29,9 @@ template <typename U, typename T>
 void make_wb_topology(std::vector<std::vector<node_shape_s<U>>>& u,const std::vector<std::vector<node_shape_s<T>>>& t) {
     make_topology(u,t);
     for (uint i = 0; i < u.size(); ++i) {
-        
+        for (uint j = 0; j < u[i].size(); ++j) {
+            node_shape_allocate(u[i][j],t[i][j]);
+        }
     }
 }
 
