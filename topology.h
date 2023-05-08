@@ -10,6 +10,7 @@
 #define TOPOLOGY_H
 
 #include <vector>
+#include <assert.h>
 
 #ifndef uint
 typedef unsigned int uint;
