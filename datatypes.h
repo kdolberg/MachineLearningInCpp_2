@@ -1,9 +1,7 @@
-/************************************************************************************************************************
- * 
+/**
  * @file datatypes.h
  * @brief Defines the basic structs and typedefs for layers, nodes, nets, etc. as well as their respective IO data.
- * 
- ************************************************************************************************************************/
+ */
 
 #ifndef DATATYPES_H
 #define DATATYPES_H
