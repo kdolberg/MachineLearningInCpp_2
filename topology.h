@@ -1,7 +1,10 @@
-/**
- * @file topology.h
- * @brief Provides function templates for making 2-D vectors that have consistent topologies irrespective of the data they contain.
- */
+/************************************************************************************************************************
+ * 																														*
+ * @file topology.h																										*
+ * @brief Provides function templates for making 2-D vectors that have consistent topologies irrespective of the data 	*
+ * they contain.																										*
+ * 																														*
+ ************************************************************************************************************************/
 
 #ifndef TOPOLOGY_H
 #define TOPOLOGY_H
