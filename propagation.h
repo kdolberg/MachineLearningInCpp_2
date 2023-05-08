@@ -1,7 +1,20 @@
 #ifndef PROPAGATION_H
 #define PROPAGATION_H
 
-#include "net.h"
+#include "datatypes.h"
+
+template <typename U, typename T>
+void node_shape_allocate(node_shape_s<U> ns, uint num) {
+    ns.b = 
+}
+
+template <typename U, typename T>
+void make_wb_topology(std::vector<std::vector<node_shape_s<U>>>& u,const std::vector<std::vector<node_shape_s<T>>>& t) {
+    make_topology(u,t);
+    for (uint i = 0; i < u.size(); ++i) {
+        
+    }
+}
 
 /**
  * @brief Performs a single iteration of forward propagation.
