@@ -36,4 +36,6 @@ private:
 	void initialize_data_caches();
 };
 
+}//ANN
+
 #endif
