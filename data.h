@@ -6,8 +6,6 @@
 #ifndef DATA_H
 #define DATA_H
 
-#include "topology.h"
-
 /**
  * @brief The basic unit of information in this project.
  */
