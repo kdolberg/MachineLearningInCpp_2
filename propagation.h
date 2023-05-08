@@ -3,9 +3,15 @@
 
 #include "datatypes.h"
 
+#define MAKE_VECTORS_SAME_SIZE(dest_,src_) (dest_).resize((src_).size())
+
 template <typename U, typename T>
-void node_shape_allocate(node_shape_s<U> ns, uint num) {
-    ns.b = 
+void node_shape_allocate(node_shape_s<std::vector<U>> dest,const node_shape_s<std::vector<T>>& src) {
+    MAKE_VECTORS_SAME_SIZE(dest.b,src.b);
+    MAKE_VECTORS_SAME_SIZE(dest.w,src.w);
+    for (uint i = 0; i < dest.w.size(); ++i) {
+        MAKE_VECTORS_SAME_SIZE(dest.w[i],src.w[i]);
+    }
 }
 
 template <typename U, typename T>
