@@ -9,6 +9,9 @@
 
 #include <vector>
 #include <assert.h>
+#include <iostream>
+#include "../CppUtilities/vec_overload.h"
+#include "overloads.h"
 
 #ifndef uint
 typedef unsigned int uint;
@@ -25,27 +28,19 @@ void copy_1d_topology(std::vector<U>& u,const std::vector<T>& t) {
 }
 
 /**
- * @brief A "stub" function template that does nothing.
- * Supports the other function with the same name. Avoids an error when we get to the end of the recursive arrays.
+ * @brief Dummy function. Does nothing.
+ * @param u Does nothing
+ * @param t Does nothing
  */
 template <typename U,typename T>
-int copy_topology(const U& u,const T& t,uint new_size) {
-	assert(new_size==0);
-	return 0;
+void copy_topology(const U& u,const T& t) {
+    std::cout << u << std::endl;
+    std::cout << t << std::endl;
 }
-
-/**
- * @brief Non-recursively resizes u to match new_size
- * @param u Vector to be resized
- * @param t Dummy argument. Does nothing
- * @param new_size New size for u 
- */
-template <typename U,typename T>
-void copy_topology(std::vector<U>& u,const T& t,uint new_size) {
-	if(new_size!=0){
-		u.resize(new_size);
-	}
-}
+// template <typename U,typename T>
+// void copy_topology(const node_shape_s<U>& u,const T& t) {}
+// template <typename U,typename T>
+// void copy_topology(const U& u,const node_shape_s<T>& t) {}
 
 /**
  * @brief Recursively copies the dimensions of two arbitrarily-dimensioned arrays
@@ -54,21 +49,11 @@ void copy_topology(std::vector<U>& u,const T& t,uint new_size) {
  * @param new_size Optional.
  */
 template <typename U,typename T>
-void copy_topology(std::vector<U>& u,const std::vector<T>& t, uint new_size) {
+void copy_topology(std::vector<U>& u,const std::vector<T>& t) {
 	copy_1d_topology(u,t);
 	for (uint i = 0; i < u.size(); ++i) {
-		copy_topology(u[i],t[i],new_size);
+		copy_topology(u[i],t[i]);
 	}
-}
-
-/**
- * @brief Recursively copies the dimensions of two arbitrarily-dimensioned arrays
- * @param u Destination vector
- * @param t Source vector
- */
-template <typename U,typename T>
-void copy_topology(std::vector<U>& u,const std::vector<T>& t) {
-	copy_topology(u,t,0);
 }
 
 /**
