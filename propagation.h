@@ -40,6 +40,13 @@ void make_wb_topology(std::vector<std::vector<node_shape_s<U>>>& u,const std::ve
 }
 
 /**
+ * @brief Allocates memory for a forward data cache struct based on net
+ * @param net The neural network that will be using this data cache
+ * @param fdata The forward data cache struct whose memory will be allocated 
+ */
+void allocate_cache_memory(const net_t& net, net_forward_data_cache_t& fdata, net_back_data_cache_t& bdata); 
+
+/**
  * @brief Performs a single iteration of forward propagation.
  * @param net The neural net that will be forwardpropagated.
  * @param fdata The forward propagation data cache.
