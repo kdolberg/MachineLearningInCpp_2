@@ -98,9 +98,14 @@ typedef struct {
      */
     net_partial_derivatives_t naive_partials;
     /**
-     * Intermediate inputs between each layer calculated during forward propagation.
+     * @brief Intermediate inputs between each layer calculated during forward propagation.
      */
     net_layer_io_data_t layer_io;
+
+    /**
+     * @brief Activation data used to calculate IO data and naive partials.
+     */
+    net_layer_io_data_t activation_data;
 } net_forward_data_cache_t;
 
 /**
