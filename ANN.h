@@ -33,11 +33,6 @@ public:
 	 * @brief Performs one iteration of forward and backpropagation on the current xy_dataset_t
 	 */
 	void learn();
-private:
-	/**
-	 * @brief Allocates memory for the back and forward data caches.
-	 */
-	void initialize_data_caches();
 };
 
 #endif
