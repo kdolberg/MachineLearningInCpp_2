@@ -35,3 +35,15 @@ std::ostream& operator<<(std::ostream& os, std::vector<scalar_datum_t> v) {
 	}
 	return os;
 }
+
+std::ostream& operator<<(std::ostream& os, const net_wb_t& wb) {
+	for (uint i = 0; i < wb.size(); i++) {
+		os << i << ": " << wb[i] << std::endl;
+	}
+	return os;
+}
+
+std::ostream& operator<<(std::ostream& os, const net_t& net) {
+	os << net.wb;
+	return os;
+}
