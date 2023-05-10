@@ -8,8 +8,7 @@
 scalar_datum_t operator*(const node_wb_t& n, const vector_datum_t& input) {
 	assert(n.w.size()==input.size());
 	scalar_datum_t ret = n.b;
-	for (uint32_t i = 0; i < n.w.size(); ++i)
-	{
+	for (uint32_t i = 0; i < n.w.size(); ++i) {
 		ret += n.w[i]*input[i];
 	}
 	return ret;
