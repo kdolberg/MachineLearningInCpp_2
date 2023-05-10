@@ -7,6 +7,8 @@ typedef unsigned int uint;
 
 #include <stdbool.h>
 
+#include "activation_functions.h"
+
 /**
  * @brief Produces a random scalar_datum_t between -0.5 and 0.5
  */
@@ -37,6 +39,14 @@ static void allocate_ws(layer_wb_t& l,uint num_weights) {
 	}
 }
 
+void assign_relu(net_activation_functions_t& afs) {
+	for (uint i = 0; i < afs.size(); ++i) {
+		for (uint j = 0; j < afs[i].size(); ++j) {
+			afs[i][j] = get_relu();
+		}
+	}
+}
+
 void make_net(net_t& n, const std::vector<uint>& def) {
 	std::vector tmp_def(def.cbegin()+1,def.cend());
 	make_topology(n.wb,tmp_def);
@@ -44,4 +54,6 @@ void make_net(net_t& n, const std::vector<uint>& def) {
 	for (uint i = 0; i < n.wb.size(); ++i) {
 		allocate_ws(n.wb[i],def[i]);
 	}
+	assign_relu(n.af);
+	n.learning_rate = 0.1;
 }
