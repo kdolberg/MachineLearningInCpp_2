@@ -6,14 +6,18 @@
 #ifndef ACTIVATION_FUNCTIONS_H
 #define ACTIVATION_FUNCTIONS_H
 
+#include "datatypes.h"
+
 /**
  * @brief Leaky ReLU function
  */
-scalar_datum_t ReLU(scalar_datum_t x);
+scalar_data_t ReLU(scalar_data_t x);
 
 /**
  * @brief Derivative of leaky ReLU function
  */
-scalar_datum_t ddxReLU(scalar_datum_t x);
+scalar_data_t ddxReLU(scalar_data_t x);
+
+node_activation_function_t get_relu();
 
 #endif //ACTIVATION_FUNCTIONS_H
