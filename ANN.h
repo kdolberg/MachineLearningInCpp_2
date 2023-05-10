@@ -10,6 +10,7 @@
 #include "propagation.h"
 #include "topology.h"
 
+scalar_datum_t random_scalar();
 
 void make_net(net_t& n, const std::vector<uint>& def);
 
