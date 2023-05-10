@@ -135,14 +135,14 @@ typedef node_shape_s<scalar_datum_t> node_wb_t;
 /**
  * @brief Activation function for a node.
  */
-typedef scalar_datum_t scalar_function_t(scalar_datum_t);
+typedef scalar_data_t scalar_function_t(scalar_data_t);
 
 /**
  * @brief Activation function for a node.
  */
 typedef struct {
-	scalar_function_t func;
-	scalar_function_t deriv_func;
+	scalar_function_t * func;
+	scalar_function_t * deriv_func;
 } node_activation_function_t;
 
 /**
