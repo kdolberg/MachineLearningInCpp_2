@@ -113,6 +113,11 @@ typedef struct {
     net_partial_derivatives_t real_partials;
 } net_back_data_cache_t;
 
+typedef struct {
+    net_forward_data_cache_t f;
+    net_back_data_cache_t b;
+} net_all_data_cache_t;
+
 /************************************************************************************************************************
                                             Structural Neural Net Datatypes
  ************************************************************************************************************************/
