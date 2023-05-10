@@ -5,14 +5,6 @@
 
 #include "overloads.h"
 
-std::vector<scalar_datum_t> for_each_scalar(const scalar_function_t& af,const std::vector<scalar_datum_t>& input) {
-	std::vector<scalar_datum_t> ret(input.size());
-	for (uint32_t i = 0; i < input.size(); ++i) {
-		ret[i] = af(input[i]);
-	}
-	return ret;
-}
-
 scalar_datum_t operator*(const node_wb_t& n, const vector_datum_t& input) {
 	assert(n.w.size()==input.size());
 	scalar_datum_t ret = n.b;
