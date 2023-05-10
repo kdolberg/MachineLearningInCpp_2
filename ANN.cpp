@@ -9,15 +9,21 @@ typedef unsigned int uint;
 
 #include "activation_functions.h"
 
+#ifndef STATIC_RAND
+#define SRAND() (srand(time(NULL)))
+#else
+#define SRAND() (srand(STATIC_RAND))
+#endif
+
 /**
  * @brief Produces a random scalar_datum_t between -0.5 and 0.5
  */
 scalar_datum_t random_scalar() {
 	static bool is_first_time = true;
 	if(is_first_time) {
-		srand(time(NULL));
+		SRAND();
+		is_first_time = false;
 	}
-	is_first_time = false;
 	return ((1.0*rand()/(1.0*RAND_MAX))-0.5);
 }
 
@@ -39,11 +45,10 @@ static void allocate_ws(layer_wb_t& l,uint num_weights) {
 	}
 }
 
-void assign_relu(net_activation_functions_t& afs) {
-	for (uint i = 0; i < afs.size(); ++i) {
-		for (uint j = 0; j < afs[i].size(); ++j) {
-			afs[i][j] = get_relu();
-		}
+void assign_relu(net_t& n) {
+	n.af.resize(n.wb.size());
+	for (uint i = 0; i < n.af.size(); ++i) {
+		n.af[i] = get_relu();
 	}
 }
 
@@ -54,6 +59,6 @@ void make_net(net_t& n, const std::vector<uint>& def) {
 	for (uint i = 0; i < n.wb.size(); ++i) {
 		allocate_ws(n.wb[i],def[i]);
 	}
-	assign_relu(n.af);
+	assign_relu(n);
 	n.learning_rate = 0.1;
 }

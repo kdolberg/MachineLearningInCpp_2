@@ -12,6 +12,7 @@
 #include <iostream>
 #include "../CppUtilities/vec_overload.h"
 #include "overloads.h"
+#include "datatypes.h"
 
 #ifndef uint
 typedef unsigned int uint;

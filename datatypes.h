@@ -57,7 +57,7 @@ struct node_shape_s{
 /**
  * @brief Partial derivatives for the weights and biases of a particular node
  */
-typedef node_shape_s<std::vector<scalar_datum_t>> node_partial_derivatives_t;
+typedef node_shape_s<scalar_data_t> node_partial_derivatives_t;
 
 /**
  * @brief Partial derivatives for the weights and biases of a layer
@@ -94,24 +94,25 @@ typedef std::vector<vector_data_t> net_layer_io_data_t;
  */
 typedef struct {
     /**
-     * @brief Naive partial derivatives calculated during forward propagation (?).
+     * @brief Partial derivatives of base values calculated during forward propagation (?).
      */
-    net_partial_derivatives_t naive_partials;
+    net_layer_io_data_t derivs;
     /**
      * @brief Intermediate inputs between each layer calculated during forward propagation.
      */
     net_layer_io_data_t layer_io;
 
     /**
-     * @brief Activation data used to calculate IO data and naive partials.
+     * @brief Activation data used to calculate IO data and derivatives.
      */
-    net_layer_io_data_t activation_data;
+    net_layer_io_data_t act;
 } net_forward_data_cache_t;
 
 /**
  * @brief Neural net data that cannot remain const during backpropagation.
  */
 typedef struct {
+    net_partial_derivatives_t naive_partials;
     /**
      * @brief Real partial derivatives calculated during backpropagation
      */
@@ -135,20 +136,15 @@ typedef node_shape_s<scalar_datum_t> node_wb_t;
 /**
  * @brief Activation function for a node.
  */
-typedef scalar_data_t scalar_function_t(scalar_data_t);
+typedef scalar_datum_t function_t(scalar_datum_t);
 
 /**
  * @brief Activation function for a node.
  */
 typedef struct {
-	scalar_function_t * func;
-	scalar_function_t * deriv_func;
-} node_activation_function_t;
-
-/**
- * @brief All activation functions used in a particular net.
- */
-typedef std::vector<std::vector<node_activation_function_t>> net_activation_functions_t;
+	function_t * func;
+	function_t * deriv_func;
+} activation_function_t;
 
 /**
  * @brief Weights and biases for a particular layer.
@@ -175,11 +171,16 @@ typedef struct {
 	/**
 	 * @brief Activation functions for each node.
 	 */
-	net_activation_functions_t af;
+	std::vector<activation_function_t> af;
 	/**
 	 * @brief Pointer to training dataset
 	 */
 	const xy_dataset_t * training_dataset;
+
+    /**
+     * @brief Vector originally used to define the net
+     */
+    std::vector<uint> def;
 } net_t;
 
 #endif

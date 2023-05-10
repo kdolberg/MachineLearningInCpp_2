@@ -1,6 +1,6 @@
 #include "activation_functions.h"
 
-static scalar_datum_t ddxReLU_scalar(scalar_datum_t x){
+static scalar_datum_t ddxReLU(scalar_datum_t x){
 	if (x>0) {
 		return 1.0;
 	} else {
@@ -8,25 +8,27 @@ static scalar_datum_t ddxReLU_scalar(scalar_datum_t x){
 	}
 }
 
-static scalar_datum_t ReLU_scalar(scalar_datum_t x){
-	return x*ddxReLU_scalar(x);
+static scalar_datum_t ReLU(scalar_datum_t x){
+	return x*ddxReLU(x);
 }
 
-scalar_data_t ReLU(scalar_data_t x){
-	scalar_data_t ret(x.size());
-	for (uint i = 0; i < x.size(); ++i) {
-		ret[i] = ReLU_scalar(x[i]);
-	}
-	return ret;
-}
-scalar_data_t ddxReLU(scalar_data_t x){
-	scalar_data_t ret(x.size());
-	for (uint i = 0; i < x.size(); ++i) {
-		ret[i] = ddxReLU_scalar(x[i]);
-	}
-	return ret;
-}
-
-node_activation_function_t get_relu() {
+activation_function_t get_relu() {
+	activation_function_t ret = {&ReLU,&ddxReLU};
 	return {&ReLU,&ddxReLU};
+}
+
+scalar_data_t for_each(const function_t * f,scalar_data_t& x) {
+	scalar_data_t ret(x.size());
+	for (uint i = 0; i < x.size(); ++i) {
+		ret[i] = f(x[i]);
+	}
+	return ret;
+}
+
+std::vector<scalar_data_t> for_each(const function_t * f, std::vector<scalar_data_t>& x) {
+	std::vector<scalar_data_t> ret(x.size());
+	for (uint i = 0; i < x.size(); ++i) {
+		ret[i] = for_each(f,x[i]);
+	}
+	return ret;
 }

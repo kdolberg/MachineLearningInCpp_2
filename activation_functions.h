@@ -18,6 +18,16 @@ scalar_data_t ReLU(scalar_data_t x);
  */
 scalar_data_t ddxReLU(scalar_data_t x);
 
-node_activation_function_t get_relu();
+activation_function_t get_relu();
+
+/**
+ * @brief Performs the function f on all members of x
+ */
+scalar_data_t for_each(const function_t * f,scalar_data_t& x);
+
+/**
+ * @brief Calls for_each on every member of x for the function f.
+ */
+std::vector<scalar_data_t> for_each(const function_t * f, std::vector<scalar_data_t>& x);
 
 #endif //ACTIVATION_FUNCTIONS_H
