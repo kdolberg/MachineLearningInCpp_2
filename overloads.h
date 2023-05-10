@@ -14,4 +14,6 @@ std::ostream& operator<<(std::ostream& os, const net_wb_t& wb);
 
 std::ostream& operator<<(std::ostream& os, const net_t& net);
 
+scalar_datum_t operator*(const node_wb_t& n, const vector_datum_t& input);
+
 #endif //OVERLOADS_H
