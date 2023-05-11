@@ -16,9 +16,28 @@ typedef unsigned int uint;
 #define SRAND() (srand(STATIC_RAND))
 #endif
 
-/**
- * @brief Produces a random scalar_datum_t between -0.5 and 0.5
- */
+/************************************************************************************************************************
+                                                    Non-Member Functions
+ ************************************************************************************************************************/
+
+void assign_relu(net_t& n) {
+	n.af.resize(n.wb.size());
+	for (uint i = 0; i < n.af.size(); ++i) {
+		n.af[i] = get_relu();
+	}
+}
+
+void make_net(net_t& n, const std::vector<uint>& def) {
+	std::vector tmp_def(def.cbegin()+1,def.cend());
+	make_topology(n.wb,tmp_def);
+	assert(n.wb.size()+1==def.size());
+	for (uint i = 0; i < n.wb.size(); ++i) {
+		allocate_ws(n.wb[i],def[i]);
+	}
+	assign_relu(n);
+	n.learning_rate = 0.1;
+}
+
 scalar_datum_t random_scalar() {
 	static bool is_first_time = true;
 	if(is_first_time) {
@@ -46,21 +65,8 @@ static void allocate_ws(layer_wb_t& l,uint num_weights) {
 	}
 }
 
-void assign_relu(net_t& n) {
-	n.af.resize(n.wb.size());
-	for (uint i = 0; i < n.af.size(); ++i) {
-		n.af[i] = get_relu();
-	}
-}
+/************************************************************************************************************************
+                                                    ANN Member Functions
+ ************************************************************************************************************************/
 
-void make_net(net_t& n, const std::vector<uint>& def) {
-	
-	std::vector tmp_def(def.cbegin()+1,def.cend());
-	make_topology(n.wb,tmp_def);
-	assert(n.wb.size()+1==def.size());
-	for (uint i = 0; i < n.wb.size(); ++i) {
-		allocate_ws(n.wb[i],def[i]);
-	}
-	assign_relu(n);
-	n.learning_rate = 0.1;
 }
