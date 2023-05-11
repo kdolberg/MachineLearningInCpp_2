@@ -20,7 +20,7 @@ void make_net(net_t& n, const std::vector<uint>& def);
 class ANN {
 private:
 	net_t net;
-	net_forward_data_cache_t forward_data;
+	net_for_data_cache_t for_data;
 	net_back_data_cache_t back_data;
 public:
 	ANN(unsigned int inputs, std::vector<unsigned int> def);

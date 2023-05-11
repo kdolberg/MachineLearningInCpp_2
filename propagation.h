@@ -44,22 +44,22 @@ void make_wb_topology(std::vector<std::vector<node_shape_s<U>>>& u,const std::ve
  * @param net The neural network that will be using this data cache
  * @param fdata The forward data cache struct whose memory will be allocated 
  */
-void allocate_cache_memory(const net_t& net, net_forward_data_cache_t& fdata, net_back_data_cache_t& bdata); 
+void allocate_cache_memory(const net_t& net, net_for_data_cache_t& fdata, net_back_data_cache_t& bdata); 
 
 /**
  * @brief Performs a single iteration of forward propagation.
- * @param net The neural net that will be forwardpropagated.
+ * @param net The neural net that will be forpropagated.
  * @param fdata The forward propagation data cache.
  */
-void forwardpropagate(const net_t& net,net_forward_data_cache_t& fdata);
+void forpropagate(const net_t& net,net_for_data_cache_t& fdata);
 
 /**
  * @brief Perforforms a single iteration of backpropagation
- * Only works of forwardpropagate has been run on this net first.
+ * Only works of forpropagate has been run on this net first.
  * @param net Neural net that is being backpropagated
- * @param fdata Forward propagation data cache previously calculated using forwardpropagate
+ * @param fdata Forward propagation data cache previously calculated using forpropagate
  * @param bdata Data cache for all outputs during this process.
  */
-void backpropagate(const net_t& net, const net_forward_data_cache_t& fdata, net_back_data_cache_t& bdata);
+void backpropagate(const net_t& net, const net_for_data_cache_t& fdata, net_back_data_cache_t& bdata);
 
 #endif //PROPAGATION_H

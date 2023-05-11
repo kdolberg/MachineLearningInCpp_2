@@ -9,7 +9,7 @@
 #include "activation_functions.h"
 #include "memory_allocation.h"
 
-void forwardpropagate(const net_t& net,net_forward_data_cache_t& fdata) {
+void forpropagate(const net_t& net,net_for_data_cache_t& fdata) {
     assert(fdata.layer_io.size()==(net.wb.size()+1));
     fdata.layer_io[0] = net.training_dataset->x_data;//Add raw input data to the cache
     for (uint layer_ind = 0; layer_ind < net.wb.size(); ++layer_ind) {//Iterate over each layer
@@ -19,7 +19,7 @@ void forwardpropagate(const net_t& net,net_forward_data_cache_t& fdata) {
     }
 }
 
-void backpropagate(const net_t& net, const net_forward_data_cache_t& fdata, net_back_data_cache_t& bdata) {
+void backpropagate(const net_t& net, const net_for_data_cache_t& fdata, net_back_data_cache_t& bdata) {
     for (uint layer_ind = net.wb.size()-1; layer_ind < net.wb.size(); --layer_ind) {
         
     }

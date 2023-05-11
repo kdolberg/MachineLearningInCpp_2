@@ -90,7 +90,7 @@ typedef struct {
 typedef std::vector<vector_data_t> net_layer_io_data_t;
 
 /**
- * @brief Neural net data that cannot remain const during forwardpropagation.
+ * @brief Neural net data that cannot remain const during forpropagation.
  */
 typedef struct {
     /**
@@ -106,7 +106,7 @@ typedef struct {
      * @brief Activation data used to calculate IO data and derivatives.
      */
     net_layer_io_data_t act;
-} net_forward_data_cache_t;
+} net_for_data_cache_t;
 
 /**
  * @brief Neural net data that cannot remain const during backpropagation.
@@ -120,7 +120,7 @@ typedef struct {
 } net_back_data_cache_t;
 
 typedef struct {
-    net_forward_data_cache_t f;
+    net_for_data_cache_t f;
     net_back_data_cache_t b;
 } net_all_data_cache_t;
 
