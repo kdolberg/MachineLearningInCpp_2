@@ -34,12 +34,12 @@ private:
 	 * @brief Cache for data produced during forward propagation.
 	 * Remains const during backpropagation.
 	 */
-	net_for_data_cache_t for_data;
+	net_for_data_cache_t fdata;
 	/**
 	 * @brief Cache for data produced during backpropagation.
 	 * Remains const during forpropagation.
 	 */
-	net_back_data_cache_t back_data;
+	net_back_data_cache_t bdata;
 public:
 	ANN(unsigned int inputs, std::vector<unsigned int> def);
 	~ANN();
