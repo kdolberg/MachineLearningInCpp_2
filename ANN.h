@@ -8,7 +8,6 @@
 #define ANN_H
 
 #include "propagation.h"
-#include "topology.h"
 
 scalar_datum_t random_scalar();
 
