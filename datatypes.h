@@ -183,4 +183,6 @@ typedef struct {
     std::vector<uint> def;
 } net_t;
 
+typedef net_wb_t gradient_t;
+
 #endif

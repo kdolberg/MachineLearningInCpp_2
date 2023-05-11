@@ -62,3 +62,13 @@ std::ostream& operator<<(std::ostream& os, const xy_dataset_t& xy) {
 	}
 	return os;
 }
+
+net_wb_t& operator+=(net_wb_t& net, const gradient_t& grad) {
+	net+=((net_wb_t)grad);
+	return net;
+}
+
+net_t& operator+=(net_t& net, const gradient_t& grad) {
+	net.wb+=grad;
+	return net;
+}

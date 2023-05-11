@@ -10,6 +10,22 @@ std::ostream& operator<<(std::ostream& os,const node_shape_s<T>& wb) {
 	return os;
 }
 
+template<typename T>
+std::vector<T>& operator+=(std::vector<T>& a, const std::vector<T>& b) {
+	assert(a.size()==b.size());
+	for (uint i = 0; i < a.size(); ++i) {
+		a[i] += b[i];
+	}
+	return a;
+}
+
+template<typename T>
+node_shape_s<T>& operator+=(node_shape_s<T>& a, const node_shape_s<T>& b) {
+	a.w += b.w;
+	a.b += b.b;
+	return a;
+}
+
 std::ostream& operator<<(std::ostream& os, const net_wb_t& wb);
 
 std::ostream& operator<<(std::ostream& os, const net_t& net);
