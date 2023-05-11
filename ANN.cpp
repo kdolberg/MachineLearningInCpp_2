@@ -1,13 +1,13 @@
 #include "ANN.h"
+#include "activation_functions.h"
 #include <time.h>
+#include <stdbool.h>
 
 #ifndef uint
 typedef unsigned int uint;
 #endif //uint
 
-#include <stdbool.h>
 
-#include "activation_functions.h"
 
 #ifndef STATIC_RAND
 #define SRAND() (srand(time(NULL)))
