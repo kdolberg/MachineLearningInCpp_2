@@ -1,5 +1,6 @@
 #include "ANN.h"
 #include "activation_functions.h"
+#include "topology.h"
 #include <time.h>
 #include <stdbool.h>
 
