@@ -32,6 +32,12 @@ public:
 	 * @brief Performs one iteration of forward and backpropagation on the current xy_dataset_t
 	 */
 	void learn();
+
+	/**
+	 * @brief Sets the learning rate.
+	 * @param rate The new learning rate.
+	 */
+	void set_learning_rate(scalar_datum_t rate);
 };
 
 #endif

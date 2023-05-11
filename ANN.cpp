@@ -69,4 +69,6 @@ static void allocate_ws(layer_wb_t& l,uint num_weights) {
                                                     ANN Member Functions
  ************************************************************************************************************************/
 
+ANN::set_learning_rate(scalar_datum_t rate) {
+	this->net.learning_rate = rate;
 }
