@@ -26,7 +26,7 @@ public:
 	ANN(unsigned int inputs, std::vector<unsigned int> def);
 	~ANN();
 	/**
-	 * Saves the xy_dataset in the net.
+	 * @brief Saves the xy_dataset in the net.
 	 */
 	void load_training_data(const xy_dataset_t& dataset);
 	/**
