@@ -53,6 +53,7 @@ void assign_relu(net_t& n) {
 }
 
 void make_net(net_t& n, const std::vector<uint>& def) {
+	
 	std::vector tmp_def(def.cbegin()+1,def.cend());
 	make_topology(n.wb,tmp_def);
 	assert(n.wb.size()+1==def.size());
