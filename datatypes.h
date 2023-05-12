@@ -112,7 +112,7 @@ typedef struct {
  * @brief Neural net data that cannot remain const during backpropagation.
  */
 typedef struct {
-    net_partial_derivatives_t naive_partials;
+    net_partial_derivatives_t prelim_partials;
     /**
      * @brief Real partial derivatives calculated during backpropagation
      */

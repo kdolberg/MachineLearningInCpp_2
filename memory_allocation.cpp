@@ -29,8 +29,8 @@ static void allocate_cache_memory(const net_t& net, net_all_data_cache_t& cache)
     cache.f.layer_io.resize(net.wb.size()+1);
     cache.f.act.resize(net.wb.size());
     cache.f.derivs.resize(net.wb.size());
-    cache.b.naive_partials.resize(net.wb.size());
-    cache.b.real_partials.resize(net.wb.size());
+    cache.b.prelim_partials.resize(net.wb.size());//Derivatives will need to account for the possibility of multiple outputs?
+    cache.b.real_partials.resize(net.wb.size());//Derivatives will need to account for the possibility of multiple outputs?
 }
 
 static void allocate_dataset_memory(vector_data_t& data,uint num_scalars_per_datum,uint dataset_size) {
