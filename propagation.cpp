@@ -19,6 +19,18 @@ void forpropagate(const net_t& net,net_for_data_cache_t& fdata) {
     }
 }
 
+vector_data_t error(const vector_data_t& s, const vector_data_t& y) {
+    uint N = s.size();
+    assert(N==y.size());
+    return (s-y)*(s-y);
+}
+
+vector_data_t derror(const vector_data_t& s, const vector_data_t& y) {
+    uint N = s.size();
+    assert(N==y.size());
+    return 2*(s-y);
+}
+
 void backpropagate(const net_t& net, const net_for_data_cache_t& fdata, net_back_data_cache_t& bdata) {
     for (uint layer_ind = net.wb.size()-1; layer_ind < net.wb.size(); --layer_ind) {
     }
