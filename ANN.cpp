@@ -70,14 +70,26 @@ static void allocate_ws(layer_wb_t& l,uint num_weights) {
                                                     ANN Member Functions
  ************************************************************************************************************************/
 
-ANN::set_learning_rate(scalar_datum_t rate) {
-	this->net.learning_rate = rate;
+ANN::ANN(const std::vector<uint>& def) {
+	make_net(this->net,def);
 }
 
-ANN::learn() {
+ANN::~ANN() {}
+
+void ANN::load_training_data(const xy_dataset_t& dataset) {
+	net_all_data_cache_t cache = add_training_dataset(this->net,dataset);
+	this->fdata = cache.f;
+	this->bdata = cache.b;
+}
+
+void ANN::learn() {
 	forpropagate(this->net,this->fdata);
 	backpropagate(this->net,this->fdata,this->bdata);
 	/**
 	 * TODO: Add a step here to calculate the gradient from the partial derivatives and update the weights and biases.
 	 */
+}
+
+void ANN::set_learning_rate(scalar_datum_t rate) {
+	this->net.learning_rate = rate;
 }
