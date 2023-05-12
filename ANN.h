@@ -56,7 +56,7 @@ private:
 	 */
 	net_back_data_cache_t bdata;
 public:
-	ANN(unsigned int inputs, std::vector<unsigned int> def);
+	ANN(const std::vector<uint>& def);
 	~ANN();
 	/**
 	 * @brief Saves the xy_dataset in the net.
