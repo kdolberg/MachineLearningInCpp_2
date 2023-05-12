@@ -21,6 +21,5 @@ void forpropagate(const net_t& net,net_for_data_cache_t& fdata) {
 
 void backpropagate(const net_t& net, const net_for_data_cache_t& fdata, net_back_data_cache_t& bdata) {
     for (uint layer_ind = net.wb.size()-1; layer_ind < net.wb.size(); --layer_ind) {
-        
     }
 }
