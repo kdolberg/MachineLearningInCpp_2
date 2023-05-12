@@ -3,6 +3,7 @@
 #include "topology.h"
 #include <time.h>
 #include <stdbool.h>
+#include "memory_allocation.h"
 
 #ifndef uint
 typedef unsigned int uint;
