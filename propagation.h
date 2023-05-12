@@ -29,6 +29,11 @@ void node_shape_allocate(node_shape_s<std::vector<U>> dest,const node_shape_s<st
     }
 }
 
+/**
+ * @brief Allocates memory for u to have the same dimensions as t
+ * @param u The topology to be formatted
+ * @param t The topology to be copied
+ */
 template <typename U, typename T>
 void make_wb_topology(std::vector<std::vector<node_shape_s<U>>>& u,const std::vector<std::vector<node_shape_s<T>>>& t) {
     make_topology(u,t);
@@ -44,7 +49,7 @@ void make_wb_topology(std::vector<std::vector<node_shape_s<U>>>& u,const std::ve
  * @param net The neural network that will be using this data cache
  * @param fdata The forward data cache struct whose memory will be allocated 
  */
-void allocate_cache_memory(const net_t& net, net_for_data_cache_t& fdata, net_back_data_cache_t& bdata); 
+void allocate_cache_memory(const net_t& net, net_for_data_cache_t& fdata, net_back_data_cache_t& bdata);
 
 /**
  * @brief Performs a single iteration of forward propagation.
