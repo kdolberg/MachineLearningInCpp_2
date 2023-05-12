@@ -21,14 +21,14 @@ typedef unsigned int uint;
                                                     Non-Member Functions
  ************************************************************************************************************************/
 
-void assign_relu(net_t& n) {
+static void assign_relu(net_t& n) {
 	n.af.resize(n.wb.size());
 	for (uint i = 0; i < n.af.size(); ++i) {
 		n.af[i] = get_relu();
 	}
 }
 
-void make_net(net_t& n, const std::vector<uint>& def) {
+/*static*/ void make_net(net_t& n, const std::vector<uint>& def) {
 	std::vector tmp_def(def.cbegin()+1,def.cend());
 	make_topology(n.wb,tmp_def);
 	assert(n.wb.size()+1==def.size());
@@ -39,7 +39,7 @@ void make_net(net_t& n, const std::vector<uint>& def) {
 	n.learning_rate = 0.1;
 }
 
-scalar_datum_t random_scalar() {
+static scalar_datum_t random_scalar() {
 	static bool is_first_time = true;
 	if(is_first_time) {
 		SRAND();
