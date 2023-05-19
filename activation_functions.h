@@ -23,11 +23,11 @@ activation_function_t get_relu();
 /**
  * @brief Performs the function f on all members of x
  */
-scalar_data_t for_each(const function_t * f,scalar_data_t& x);
+scalar_data_t for_each(const function_t * f, const scalar_data_t& x);
 
 /**
  * @brief Calls for_each on every member of x for the function f.
  */
-std::vector<scalar_data_t> for_each(const function_t * f, std::vector<scalar_data_t>& x);
+std::vector<scalar_data_t> for_each(const function_t * f, const std::vector<scalar_data_t>& x);
 
 #endif //ACTIVATION_FUNCTIONS_H

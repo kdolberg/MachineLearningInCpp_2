@@ -17,7 +17,7 @@ activation_function_t get_relu() {
 	return {&ReLU,&ddxReLU};
 }
 
-scalar_data_t for_each(const function_t * f,scalar_data_t& x) {
+scalar_data_t for_each(const function_t * f, const scalar_data_t& x) {
 	scalar_data_t ret(x.size());
 	for (uint i = 0; i < x.size(); ++i) {
 		ret[i] = f(x[i]);
@@ -25,7 +25,7 @@ scalar_data_t for_each(const function_t * f,scalar_data_t& x) {
 	return ret;
 }
 
-std::vector<scalar_data_t> for_each(const function_t * f, std::vector<scalar_data_t>& x) {
+std::vector<scalar_data_t> for_each(const function_t * f,const std::vector<scalar_data_t>& x) {
 	std::vector<scalar_data_t> ret(x.size());
 	for (uint i = 0; i < x.size(); ++i) {
 		ret[i] = for_each(f,x[i]);

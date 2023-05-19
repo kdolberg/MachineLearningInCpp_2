@@ -2,11 +2,8 @@
 #include "memory_allocation.h"
 
 scalar_datum_t __xor__(uint a, uint b) {
-	if ((a && !b) || (!a && b)) {
-		return 1.0;
-	} else {
-		return 0.0;
-	}
+	// return ((!a)!=(!b)) ? (1.0) : (0.0);
+	return ((!a) ^ (!b));
 }
 
 xy_dataset_t make_xor_dataset() {
