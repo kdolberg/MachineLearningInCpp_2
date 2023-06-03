@@ -3,6 +3,7 @@
 
 #include "datatypes.h"
 #include <ostream>
+#include <fstream>
 #include "../CppUtilities/vec_overload.h"
 
 template<typename T>
@@ -105,5 +106,8 @@ std::ostream& operator<<(std::ostream& os, const xy_dataset_t& xy);
 scalar_datum_t operator*(const node_wb_t& n, const vector_datum_t& input);
 vector_datum_t operator*(const layer_wb_t& l, const vector_datum_t& input);
 vector_data_t operator*(const layer_wb_t& l, const vector_data_t& input);
+
+std::fstream& operator<<(std::fstream& os, const net_wb_t& wb);
+std::fstream& operator<<(std::fstream& os, const net_t& net);
 
 #endif //OVERLOADS_H

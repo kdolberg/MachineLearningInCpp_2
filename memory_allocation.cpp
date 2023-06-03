@@ -2,8 +2,12 @@
 #include <iostream>
 #include <assert.h>
 
+uint net_num_inputs(const net_wb_t& wb) {
+    return wb[0][0].w.size();
+}
+
 uint net_num_inputs(const net_t& net) {
-    return net.wb[0][0].w.size();
+    return net_num_inputs(net.wb);
 }
 
 static uint get_dataset_size(const xy_dataset_t& data) {
@@ -11,7 +15,7 @@ static uint get_dataset_size(const xy_dataset_t& data) {
     return data.x_data.size();
 }
 
-static uint net_num_outputs(const net_wb_t& wb) {
+uint net_num_outputs(const net_wb_t& wb) {
     return wb[wb.size()-1].size();
 }
 

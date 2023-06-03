@@ -3,6 +3,7 @@
 #include <stdbool.h>
 #include <assert.h>
 
+#include "memory_allocation.h"
 #include "overloads.h"
 
 scalar_datum_t operator*(const node_wb_t& n, const vector_datum_t& input) {
@@ -71,4 +72,26 @@ net_wb_t& operator+=(net_wb_t& net, const gradient_t& grad) {
 net_t& operator+=(net_t& net, const gradient_t& grad) {
 	net.wb+=grad;
 	return net;
+}
+
+
+net_def_t net2def(const net_wb_t& net) {
+	net_def_t ret(net.size()+1);
+	ret[0] = net_num_inputs(net);
+	for (uint i = 1; i < ret.size(); ++i) {
+		ret[i] = net[i].size();
+	}
+	return ret;
+}
+
+std::fstream& operator<<(std::fstream& fs, const net_wb_t& wb) {
+	net_def_t def = net2def(wb);
+	for (int i = 0; i < wb.size(); ++i) {
+		
+	}
+	return fs;
+}
+
+std::fstream& operator<<(std::fstream& fs, const net_t& net) {
+	return fs;
 }

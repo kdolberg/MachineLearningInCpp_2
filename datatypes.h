@@ -156,6 +156,11 @@ typedef std::vector<node_wb_t> layer_wb_t;
 typedef std::vector<layer_wb_t> net_wb_t;
 
 /**
+ * @brief Array of uints. Used to define a net's topology
+ */
+typedef std::vector<uint> net_def_t;
+
+/**
  * @brief Weights, biases, and activation functions of a net.
  * This struct is intended to include all information in a neural net that can remain const during back and forward propagation.
  */
@@ -180,9 +185,10 @@ typedef struct {
     /**
      * @brief Vector originally used to define the net
      */
-    std::vector<uint> def;
+    net_def_t def;
 } net_t;
 
 typedef net_wb_t gradient_t;
+
 
 #endif
