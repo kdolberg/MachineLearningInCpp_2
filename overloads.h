@@ -4,7 +4,7 @@
 #include "datatypes.h"
 #include <ostream>
 #include <fstream>
-#include "../CppUtilities/vec_overload.h"
+#include "../Utilities/vector_overloads.h"
 
 template<typename T>
 std::ostream& operator<<(std::ostream& os,const node_shape_s<T>& wb) {
