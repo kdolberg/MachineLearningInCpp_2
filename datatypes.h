@@ -11,6 +11,9 @@
 #include<stdbool.h>
 #include<vector>
 #include<list>
+#include "linear_algebra.h"
+
+namespace ml {
 
 /************************************************************************************************************************
                                                         IO data types
