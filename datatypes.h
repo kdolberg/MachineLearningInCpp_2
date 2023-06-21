@@ -19,11 +19,26 @@ namespace ml {
                                                         IO data types
  ************************************************************************************************************************/
 
+    /**
+     * @brief The basic unit of information in this project.
+     */
+    typedef double scalar_datum_t;
 
-/**
- * @brief The basic unit of information in this project.
- */
-typedef double scalar_datum_t;
+    /**
+     * @brief Row in a matrix
+     */
+    typedef la::HorizontalVector<scalar_datum_t> row_t;
+
+    /**
+     * @brief Column in a matrix
+     */
+    typedef la::VecrticalVector<scalar_datum_t> col_t;
+
+    /**
+     * @brief Matrix
+     */
+    typedef la::Matrix<scalar_datum_t> matrix_t;
+}
 
 /**
  * @brief The basic IO vector for layers. Also the basic input vector for nodes.
