@@ -1,9 +1,9 @@
 #ifndef OVERLOADS_H
 #define OVERLOADS_H
 
-#include "datatypes.h"
 #include <ostream>
-#include "vector_overloads.h"
+#include "datatypes.h"
+#include "linear_algebra.h"
 
 template<typename T>
 std::ostream& operator<<(std::ostream& os,const node_shape_s<T>& wb) {
