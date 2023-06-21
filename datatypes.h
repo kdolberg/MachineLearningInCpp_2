@@ -134,6 +134,10 @@ typedef struct {
 /**
  * @brief The weights and biases of one layer 
  */
+typedef struct{
+     matrix_t weights;
+     vector_datum_t biases;
+} layer_parameters_t;
 
 /**
  * @brief Activation function for a node.
