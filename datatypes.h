@@ -19,12 +19,6 @@ namespace ml {
                                                         IO data types
  ************************************************************************************************************************/
 
-#ifndef uint
-/**
- * @brief Unsigned integer.
- */
-typedef unsigned int uint;
-#endif
 
 /**
  * @brief The basic unit of information in this project.
