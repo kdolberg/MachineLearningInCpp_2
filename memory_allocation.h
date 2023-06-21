@@ -1,6 +1,6 @@
 #include "propagation.h"
 #include "topology.h"
-#include "../Utilities/vector_overloads.h"
+#include "vector_overloads.h"
 
 /**
  * @brief Allocates memory for a dataset that can be used as training data
