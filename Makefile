@@ -1,13 +1,16 @@
+# Git version
+GIT_VERSION := "$(shell git describe --abbrev=4 --dirty --always --tags)"
+
 # compiler
 CXX = g++
 # compiler flags
-CXXFLAGS = -std=c++23 -Wall
+CXXFLAGS = -std=c++23 -Wall -DVERSION=\"$(GIT_VERSION)\"
 
 # directory of header files
 INCLUDES = -I. -I../Utilities
 
-# sources and objects
-SOURCES = ANN.cpp main_test.cpp propagation.cpp activation_functions.cpp memory_allocation.cpp overloads.cpp
+# sources and objectsC
+SOURCES = main_test.cpp# ANN.cpp propagation.cpp activation_functions.cpp memory_allocation.cpp overloads.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
 
 # target executable
