@@ -58,15 +58,6 @@ typedef std::vector<scalar_datum_t> scalar_data_t;
 typedef std::vector<vector_datum_t> vector_data_t;
 
 /**
- * @brief Template for anything with the topology of a node.
- */
-template<typename T>
-struct node_shape_s{
-    T b;
-    std::vector<T> w;
-};
-
-/**
  * @brief Partial derivatives for the weights and biases of a particular node
  */
 typedef node_shape_s<scalar_data_t> node_partial_derivatives_t;
@@ -141,9 +132,8 @@ typedef struct {
  ************************************************************************************************************************/
 
 /**
- * @brief The weights and bias of a particular node.
+ * @brief The weights and biases of one layer 
  */
-typedef node_shape_s<scalar_datum_t> node_wb_t;
 
 /**
  * @brief Activation function for a node.
