@@ -6,7 +6,7 @@
 #ifndef DATATYPES_H
 #define DATATYPES_H
 
-//Standard includes
+//Includes
 #include<stdint.h>
 #include<stdbool.h>
 #include<vector>
