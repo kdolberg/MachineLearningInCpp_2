@@ -10,7 +10,7 @@ CXXFLAGS = -std=c++23 -Wall -DVERSION=\"$(GIT_VERSION)\"
 INCLUDES = -I. -I../Utilities
 
 # sources and objectsC
-SOURCES = main_test.cpp# ANN.cpp propagation.cpp activation_functions.cpp memory_allocation.cpp overloads.cpp
+SOURCES = main_test.cpp ANN.cpp propagation.cpp activation_functions.cpp memory_allocation.cpp overloads.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
 
 # target executable
