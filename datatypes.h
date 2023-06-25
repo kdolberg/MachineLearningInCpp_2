@@ -64,6 +64,40 @@ namespace MachineLearning {
     typedef col_data_t layer_out_data_t;
 
     typedef col_data_t layer_in_data_t;
+
+    /**
+     * @brief Activation function for a node.
+     */
+    typedef scalar_datum_t function_t(scalar_datum_t);
+
+    /**
+     * @brief Activation function for a node.
+     * @param func Activation function
+     * @param deriv_func Activation function derivative
+     */
+    typedef struct {
+        function_t * func;
+        function_t * deriv_func;
+        activation_function_t operator++() {
+            return {this->deriv_func,this->func};
+        }
+    } activation_function_t;
+
+    /**
+     * @brief A dataset formatted for a neural network to train on it.
+     * Each vector_datum_t (elements of the two vectors in the struct) is one discrete datapoint. 
+     * @param y_data Compared to the output of the output layer for use in the error function.
+     */
+    typedef struct {
+        /**
+         * @brief Serves as input for the input layer at the start of training.
+         */
+        vector_data_t x_data;
+        /**
+         * @brief 
+         */
+        vector_data_t y_data;
+    } xy_dataset_t;
 }
 
 /**
@@ -92,21 +126,6 @@ typedef std::vector<node_partial_derivatives_t> layer_partial_derivatives_t;
  * @brief Partial derivatives for the weights and biases of a net.
  */
 typedef std::vector<layer_partial_derivatives_t> net_partial_derivatives_t;
-
-/**
- * @brief A dataset formatted for a neural network to train on it.
- * Each vector_datum_t (elements of the two vectors in the struct) is one discrete datapoint. 
- */
-typedef struct {
-    /**
-     * @brief Serves as input for the input layer at the start of training.
-     */
-    vector_data_t x_data;
-    /**
-     * @brief Compared to the output of the output layer for use in the error function.
-     */
-    vector_data_t y_data;
-} xy_dataset_t;
 
 /**
  * @brief Contains the INPUT data for each layer in a net.
@@ -152,18 +171,7 @@ typedef struct {
                                             Structural Neural Net Datatypes
  ************************************************************************************************************************/
 
-/**
- * @brief Activation function for a node.
- */
-typedef scalar_datum_t function_t(scalar_datum_t);
 
-/**
- * @brief Activation function for a node.
- */
-typedef struct {
-	function_t * func;
-	function_t * deriv_func;
-} activation_function_t;
 
 /**
  * @brief Weights and biases used in a particular net. Can also be used as a gradient.
