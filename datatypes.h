@@ -13,7 +13,7 @@
 #include<list>
 #include "linear_algebra.h"
 
-namespace ml {
+namespace MachineLearning {
 
 /************************************************************************************************************************
                                                         IO data types
