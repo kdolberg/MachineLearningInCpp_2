@@ -39,10 +39,32 @@ namespace MachineLearning {
      */
     typedef LinearAlgebra::Matrix<scalar_datum_t> matrix_t;
 
-/**
- * @brief The basic IO vector for layers. Also the basic input vector for nodes.
- */
-typedef std::vector<scalar_datum_t> vector_datum_t;
+    /**
+     * @brief Weights and biases for a particular layer.
+     */
+    typedef struct layer_wb_t{
+        matrix_t weights;
+        col_t biases;
+    } layer_wb_t;
+
+    /**
+     * @brief Column vector representing input data for a layer.
+     * Interchangeable with layer_out_datum_t.
+     */
+    typedef col_t layer_in_datum_t;
+
+    /**
+     * @brief Column vector representing output data for a lyaer.
+     * Interchangeable with layer_in_datum_t.
+     */
+    typedef col_t layer_out_datum_t;
+
+    typedef std::vector<col_t> col_data_t;
+
+    typedef col_data_t layer_out_data_t;
+
+    typedef col_data_t layer_in_data_t;
+}
 
 /**
  * @brief A whole bunch of scalars. Identical in structure to a vector_datum_t, but serves a different purpose. 
@@ -131,14 +153,6 @@ typedef struct {
  ************************************************************************************************************************/
 
 /**
- * @brief The weights and biases of one layer 
- */
-typedef struct{
-     matrix_t weights;
-     vector_datum_t biases;
-} layer_parameters_t;
-
-/**
  * @brief Activation function for a node.
  */
 typedef scalar_datum_t function_t(scalar_datum_t);
@@ -151,10 +165,6 @@ typedef struct {
 	function_t * deriv_func;
 } activation_function_t;
 
-/**
- * @brief Weights and biases for a particular layer.
- */
-typedef std::vector<node_wb_t> layer_wb_t;
 /**
  * @brief Weights and biases used in a particular net. Can also be used as a gradient.
  */
