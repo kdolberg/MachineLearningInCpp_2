@@ -27,18 +27,17 @@ namespace MachineLearning {
     /**
      * @brief Row in a matrix
      */
-    typedef la::HorizontalVector<scalar_datum_t> row_t;
+    typedef LinearAlgebra::HorizontalVector<scalar_datum_t> row_t;
 
     /**
      * @brief Column in a matrix
      */
-    typedef la::VecrticalVector<scalar_datum_t> col_t;
+    typedef LinearAlgebra::VecrticalVector<scalar_datum_t> col_t;
 
     /**
      * @brief Matrix
      */
-    typedef la::Matrix<scalar_datum_t> matrix_t;
-}
+    typedef LinearAlgebra::Matrix<scalar_datum_t> matrix_t;
 
 /**
  * @brief The basic IO vector for layers. Also the basic input vector for nodes.
