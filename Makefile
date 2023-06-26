@@ -10,7 +10,8 @@ CXXFLAGS = -std=c++23 -Wall -DVERSION=\"$(GIT_VERSION)\"
 INCLUDES = -I. -I../Utilities
 
 # sources and objectsC
-SOURCES = ./*.cpp ../
+# SOURCES = ./*.cpp ../
+SOURCES = main_test.cpp ../Utilities/la_vector.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
 
 # target executable
